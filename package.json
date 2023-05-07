@@ -4,8 +4,8 @@
   "description": "html-builder task for RSSchool",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./01-read-file ./02-write-file",
-    "lint:fix": "eslint ./01-read-file ./02-write-file --fix"
+    "lint": "eslint ./01-read-file ./02-write-file ./03-files-in-folder",
+    "lint:fix": "eslint ./01-read-file ./02-write-file ./03-files-in-folder --fix"
   },
   "author": "evgeniimal",
   "license": "ISC",
