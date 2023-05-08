@@ -16,9 +16,9 @@ const CSS_STYLE = path.join(__dirname, 'project-dist', 'style.css');
   try {
     await fs.access(DIST_PROJECT, fs.constants.F_OK);
     await fs.rm(DIST_PROJECT, { recursive: true, force: true });
-    initialize();
+    await initialize();
   } catch (error) {
-    initialize();
+    await initialize();
   }
 }());
 
