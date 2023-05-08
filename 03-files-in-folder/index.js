@@ -1,5 +1,6 @@
 const path = require('node:path');
 const fs = require('node:fs/promises');
+
 const DIR = path.join(__dirname, 'secret-folder');
 
 (async function() {
