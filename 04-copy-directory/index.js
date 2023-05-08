@@ -7,15 +7,16 @@ const COPY = path.join(__dirname, 'files-copy');
   try {
     await fs.access(COPY, fs.constants.F_OK);
     await fs.rm(COPY, { recursive: true, force: true });
+    await fs.mkdir(COPY, { recursive: true });
     readDir();
   } catch (error) {
+    await fs.mkdir(COPY, { recursive: true });
     readDir();
   }
 }());
 
 async function readDir() {
   try {
-    await fs.mkdir(COPY, { recursive: true });
     const dirents = await fs.readdir(DIR, {withFileTypes: true});
     dirents.forEach(dirent => {
       if (dirent.isFile) {
