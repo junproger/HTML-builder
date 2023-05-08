@@ -4,8 +4,8 @@
   "description": "html-builder task for RSSchool",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./01-read-file ./02-write-file ./03-files-in-folder ./04-copy-directory ./05-merge-styles",
-    "lint:fix": "eslint ./01-read-file ./02-write-file ./03-files-in-folder ./04-copy-directory ./05-merge-styles --fix"
+    "lint": "eslint ./01-read-file ./02-write-file ./03-files-in-folder ./04-copy-directory ./05-merge-styles ./06-build-page",
+    "lint:fix": "eslint ./01-read-file ./02-write-file ./03-files-in-folder ./04-copy-directory ./05-merge-styles ./06-build-page --fix"
   },
   "author": "evgeniimal",
   "license": "ISC",
