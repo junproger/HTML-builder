@@ -16,22 +16,27 @@ const CSS_STYLE = path.join(__dirname, 'project-dist', 'style.css');
   try {
     await fs.access(DIST_PROJECT, fs.constants.F_OK);
     await fs.rm(DIST_PROJECT, { recursive: true, force: true });
-    await fs.mkdir(DIST_PROJECT, { recursive: true });
-    readAssets(ASSETS, DIST_ASSETS);
-    saveTemplate();
-    readCSSDir();
+    initialize();
   } catch (error) {
-    await fs.mkdir(DIST_PROJECT, { recursive: true });
-    readAssets(ASSETS, DIST_ASSETS);
-    saveTemplate();
-    readCSSDir();
+    initialize();
   }
 }());
+
+async function initialize() {
+  try {
+    await fs.mkdir(DIST_PROJECT, { recursive: true });
+    await readAssets(ASSETS, DIST_ASSETS);
+    await saveTemplate();
+    await readCSSDir();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function saveTemplate() {
   try {
     const TEMP_CONTENT = await fs.readFile(TEMPLATE, { encoding: 'utf8' });
-    readCompDir(TEMP_CONTENT);
+    await readCompDir(TEMP_CONTENT);
   } catch (err) {
     console.error(err.message);
   }
