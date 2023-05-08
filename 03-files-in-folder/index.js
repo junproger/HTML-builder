@@ -7,17 +7,23 @@ const DIR = path.join(__dirname, 'secret-folder');
     const dirents = await fs.readdir(DIR, {withFileTypes: true});
     dirents.forEach(dirent => {
       if (dirent.isFile()) {
-        const [ FN, FE ] = (dirent.name).split('.');
         const PATH = path.join(DIR, dirent.name);
-        fs.stat(PATH).then(STATS => {
-          if (STATS.isFile()) {
-            console.log(`${FN} - ${FE} - ${STATS.size/1000}kb`);
-          }
-        })
-          .catch(error => console.log(error));
+        const [ FN, FE ] = (dirent.name).split('.');
+        listFiles(PATH, FN, FE);
       }
     });
   } catch (error) {
     console.error(error);
   }
 }());
+
+async function listFiles(PATH, FN, FE) {
+  try {
+    const STATS = await fs.stat(PATH);
+    if (STATS.isFile()) {
+      console.log(`${FN} - ${FE} - ${STATS.size/1000}kb`);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
