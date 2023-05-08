@@ -1,5 +1,6 @@
 const path = require('node:path');
 const fs = require('node:fs/promises');
+
 const DIR = path.join(__dirname, 'files');
 const COPY = path.join(__dirname, 'files-copy');
 
@@ -7,13 +8,20 @@ const COPY = path.join(__dirname, 'files-copy');
   try {
     await fs.access(COPY, fs.constants.F_OK);
     await fs.rm(COPY, { recursive: true, force: true });
-    await fs.mkdir(COPY, { recursive: true });
-    readDir();
+    initialize();
   } catch (error) {
-    await fs.mkdir(COPY, { recursive: true });
-    readDir();
+    initialize();
   }
 }());
+
+async function initialize() {
+  try {
+    await fs.mkdir(COPY, { recursive: true });
+    await readDir();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function readDir() {
   try {
