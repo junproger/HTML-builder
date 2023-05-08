@@ -5,8 +5,6 @@ const fs = require('node:fs/promises');
 const SOURCE = path.join(__dirname, 'styles');
 const BUNDLE = path.join(__dirname, 'project-dist', 'bundle.css');
 
-// const filewrite = fs.createWriteStream(purpose, 'utf8');
-
 (async function() {
   try {
     await fs.access(BUNDLE, fs.constants.F_OK);
