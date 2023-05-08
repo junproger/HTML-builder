@@ -8,9 +8,9 @@ const COPY = path.join(__dirname, 'files-copy');
   try {
     await fs.access(COPY, fs.constants.F_OK);
     await fs.rm(COPY, { recursive: true, force: true });
-    initialize();
+    await initialize();
   } catch (error) {
-    initialize();
+    await initialize();
   }
 }());
 
