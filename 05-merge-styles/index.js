@@ -9,13 +9,20 @@ const BUNDLE = path.join(__dirname, 'project-dist', 'bundle.css');
   try {
     await fs.access(BUNDLE, fs.constants.F_OK);
     await fs.rm(BUNDLE, { recursive: true, force: true });
-    await fs.writeFile(BUNDLE, os.EOL);
-    readDir();
+    initialize();
   } catch (error) {
-    await fs.writeFile(BUNDLE, os.EOL);
-    readDir();
+    initialize();
   }
 }());
+
+async function initialize() {
+  try {
+    await fs.writeFile(BUNDLE, os.EOL);
+    await readDir();
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 async function readDir() {
   try {
