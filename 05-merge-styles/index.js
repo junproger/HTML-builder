@@ -9,9 +9,9 @@ const BUNDLE = path.join(__dirname, 'project-dist', 'bundle.css');
   try {
     await fs.access(BUNDLE, fs.constants.F_OK);
     await fs.rm(BUNDLE, { recursive: true, force: true });
-    initialize();
+    await initialize();
   } catch (error) {
-    initialize();
+    await initialize();
   }
 }());
 
